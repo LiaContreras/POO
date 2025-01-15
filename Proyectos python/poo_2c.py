@@ -53,6 +53,6 @@ mi_enemigo = Personaje("Ángel", 70, 100, 70, 100)
 #mi_personaje.__vida
 print(mi_personaje.get_vida())
 mi_personaje.set_vida(-5)
-mi_personaje.Personaje__vida = -50
+mi_personaje._Personaje__vida = -50
 print(mi_personaje.get_vida())
 #mi_personaje.atacar(mi_enemigo)
