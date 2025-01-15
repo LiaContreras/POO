@@ -37,9 +37,21 @@ class Personaje:
         enemigo.vida = max(0, enemigo.vida - daño)
         print(self.nombre, "Ha realizado", daño, "puntos de daño a", enemigo.nombre)
         print("Vida de", enemigo.nombre, "es", enemigo.vida)
+        
+class Guerrero(Personaje):
+    
+    #sobreescribir el constructor
+    def __init__(self, nombre, fuerza, inteligencia, defensa, vida, espada):
+        super().__init__(nombre, fuerza, inteligencia, defensa, vida)
+        self.espada = espada
+
+arturoSuarez = Guerrero("Arturo Suárez", 12, 3000, 2, 100, .5)
+arturoSuarez.imprimir_atributos()
+print("El valor de la espada es:", arturoSuarez.espada)
+
 
 # Ejemplo de uso
-mi_personaje = Personaje('EsteBandido', 40, 10, 30, 100)
-mi_personaje.imprimir_atributos()
-mi_enemigo = Personaje("Ángel", 70, 30, 70, 100)
-mi_personaje.atacar(mi_enemigo)
+#mi_personaje = Personaje('EsteBandido', 40, 10, 30, 100)
+#mi_personaje.imprimir_atributos()
+#mi_enemigo = Personaje("Ángel", 70, 30, 70, 100)
+#mi_personaje.atacar(mi_enemigo)
