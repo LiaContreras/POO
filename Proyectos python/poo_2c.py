@@ -44,14 +44,82 @@ class Guerrero(Personaje):
     def __init__(self, nombre, fuerza, inteligencia, defensa, vida, espada):
         super().__init__(nombre, fuerza, inteligencia, defensa, vida)
         self.espada = espada
+        
+    #Sobreescribir impresión de atributos
+    def imprimir_atributos(self):
+        super().imprimir_atributos()
+        print("-Espada:", self.espada)
 
-arturoSuarez = Guerrero("Arturo Suárez", 12, 3000, 2, 100, .5)
+    #Sobreescribir el cálculo de el daño
+    def dañar(self, enemigo,):
+        return self.fuerza*self.espada - enemigo.defensa 
+    
+    #escoger navaja
+    def escoger_navaja(self):
+        opcion = int(input("Escoge la navaja de la muerte:\n(1) Navaja Suiza, daño 10.\n(2) Navaja Pioja, daño 6.\n>>>>>"))
+        if(opcion == 1):
+            self.espada = 10
+        elif(opcion == 2):
+            self.espada = 6
+        else:
+            print("Valor inválido, intente nuevamente")
+            #volver a escoger navaja
+            self.escoger_navaja()
+            
+class Mago(Personaje):
+    
+    #sobreescribir el constructor
+    def __init__(self, nombre, fuerza, inteligencia, defensa, vida, libro):
+        super().__init__(nombre, fuerza, inteligencia, defensa, vida)
+        self.libro = libro
+        
+    #Sobreescribir impresión de atributos
+    def imprimir_atributos(self):
+        super().imprimir_atributos()
+        print("-Libro:", self.libro)
+
+    #Sobreescribir el cálculo de el daño
+    def dañar(self, enemigo,):
+        return self.inteligencia*self.libro - enemigo.defensa 
+    
+    #escoger navaja
+    def escoger_libro(self):
+        opcion = int(input("Escoge el libro de la sabiduria:\n(1) Principito, daño 10.\n(2) Crepusculo, daño 6.\n>>>>>"))
+        if(opcion == 1):
+            self.libro = 10
+        elif(opcion == 2):
+            self.libro = 6
+        else:
+            print("Valor inválido, intente nuevamente")
+            #volver a escoger navaja
+            self.escoger_libro()
+            
+#crear todos objetos
+persona = Personaje("Ángel Suarez", 20, 15, 2, 100)
+arturoSuarez = Guerrero("Arturo Suárez", 20, 15, 2, 100, 5)
+gandalf = Mago("Arturo", 12, 15 ,2 , 100, 5)
+#Atributos antes de la tragedia
+#arturoSuarez.escoger_navaja()
+persona.imprimir_atributos()
 arturoSuarez.imprimir_atributos()
-print("El valor de la espada es:", arturoSuarez.espada)
+gandalf.imprimir_atributos()
+#Ataques sin piedad
+persona.atacar(arturoSuarez)
+arturoSuarez.atacar(gandalf)
+gandalf.atacar(persona)
 
+#Atributos después de la tragedia
+persona.imprimir_atributos()
+arturoSuarez.imprimir_atributos()
+gandalf.imprimir_atributos()
+
+
+#print("El valor de la espada es:", arturoSuarez.espada)
+#polimorfismo: Un mismo método puede tener un comportamiento diferente dependiendo de el objeto que lo llame
 
 # Ejemplo de uso
 #mi_personaje = Personaje('EsteBandido', 40, 10, 30, 100)
 #mi_personaje.imprimir_atributos()
 #mi_enemigo = Personaje("Ángel", 70, 30, 70, 100)
 #mi_personaje.atacar(mi_enemigo)
+#un = asigna el valor de una variable mientras que == compara los aributos
